@@ -9,7 +9,7 @@ import { connectDesk } from './live.js';
 import { createRuntime } from './runtime.js';
 import { createRecovery } from './recovery.js';
 import { shouldTour, startTour } from './tour.js';
-import { shouldLight, lightFire } from './fire.js';
+import { shouldWelcome, showWelcome } from './welcome.js';
 // Codesk UI — a little desktop. Panels from .codesk/state.json become
 // draggable windows. The page itself never scrolls; windows do.
 //
@@ -412,7 +412,7 @@ function applySnapshot(view) {
   notify('snapshot');
   render();
   if (JSON.stringify(store.usage) !== usage) notify('usage');
-  fire?.sync();
+  welcome?.sync();
   tourWhenReady();
 }
 
@@ -462,12 +462,12 @@ function liftSplash() {
 // What this machine has already seen. Read once a page; `toured` is the mark that
 // no folder needs the tour again.
 let machine = null;
-let fire = null, desked = false, touring = false;
+let welcome = null, desked = false, touring = false;
 
-// The tour shows a working desk, so it waits for the fire and an open chat. It
+// The tour shows a working desk, so it waits for the welcome screen and an open chat. It
 // leaves a newcomer's first question ready in the chat box, theirs to send.
 function tourWhenReady() {
-  if (!desked || touring || fire) return;
+  if (!desked || touring || welcome) return;
   const connected = !!store.acp?.sessionId || store.acp?.status === 'asleep';
   if (!shouldTour(machine, connected)) return;
   touring = true;
@@ -508,7 +508,7 @@ Promise.all([skins.load().then((list) => { store.skins = list; }), loadWindows(c
     refreshDesk(d);
     if (!desked) {
       desked = true;
-      if (shouldLight(d.state, store.tabs)) fire = lightFire({ store, request, machine, onDone() { fire = null; tourWhenReady(); } });
+      if (shouldWelcome(d.state, store.tabs)) welcome = showWelcome({ store, request, machine, onDone() { welcome = null; tourWhenReady(); } });
       tourWhenReady();
     }
     return true;

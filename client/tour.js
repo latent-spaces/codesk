@@ -1,5 +1,5 @@
 // The first-run tour: a spotlight that hops from one part of the desk to the next,
-// with a card saying what it is. It runs once per machine, after the fire, when an
+// with a card saying what it is. It runs once per machine, after the welcome screen, when an
 // agent is connected and everything it points at works. `?tour` in the address
 // runs it again, `?notour` holds it back.
 

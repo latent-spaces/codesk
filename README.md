@@ -38,7 +38,7 @@ cd path/to/project
 codesk
 ```
 
-Your browser opens the desk. Pick an agent and the fire lights.
+Your browser opens the desk. Pick an agent to connect and open your desk.
 Try asking:
 
 > “Run this project and put the preview next to our chat.”

@@ -32,8 +32,8 @@ The Chat window can hold several chats at once, so another agent may be working
 on this project and this desk beside you. Treat the panels as shared — reuse your
 own panel IDs, and leave another chat's windows alone unless the user asks.
 
-A first-run desk opens dark: the user picks an agent, connecting lights the
-fire, and the tour runs once per machine. Chat has the desk to itself, and the
+A first-run desk shows the pink mascot: the user picks an agent, connects,
+and the tour runs once per machine. Chat has the desk to itself, and the
 tour ends by leaving "What can I do here in Codesk?" in the box for the user
 to send.
 
