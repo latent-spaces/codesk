@@ -1,0 +1,8 @@
+{
+  "icon": "🎬",
+  "title": "Video",
+  "description": "Give your agent a link or a file and it plays here.",
+  "ask": "Put a video window on the desk playing this link or file path: ",
+  "height": 400,
+  "fill": true
+}

@@ -1,0 +1,9 @@
+node_modules/
+.codesk/
+.DS_Store
+.playwright-mcp/
+design/
+.codesk-install-*/
+.impeccable/
+PRODUCT.md
+brag*
