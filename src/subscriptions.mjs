@@ -210,7 +210,11 @@ export function createSubscriptions(onChange, { wakeProvider } = {}) {
         const changed = adopted.some((row, i) => row !== rows[i]);
         rows = adopted;
         return { changed, names: new Set(rows
-          .filter(row => (!provider || row.name === provider) && (force && !row.retryAt || due(row, manual ? MANUAL_GAP : AUTO_REFRESH)))
+          // A deliberate manual check may probe during automatic backoff, but
+          // still shares the one-minute attempt gap across all desks.
+          .filter(row => (!provider || row.name === provider) && (manual
+            ? !row.checked || Date.now() - row.checked >= MANUAL_GAP
+            : force && !row.retryAt || due(row, AUTO_REFRESH)))
           .map(row => row.name)) };
       };
       let { changed, names } = pick();
