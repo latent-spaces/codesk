@@ -1,6 +1,6 @@
 {
   "name": "codesk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A desktop in your browser for Claude Code, Codex, and any agent that speaks ACP.",
   "type": "module",
   "bin": {
@@ -16,7 +16,7 @@
     "@agentclientprotocol/codex-acp": "2.5.0",
     "@agentclientprotocol/sdk": "1.4.0",
     "fflate": "0.8.3",
-    "vite": "8.3.2"
+    "vite": "8.3.3"
   },
   "devDependencies": {
     "@types/node": "26.6.4",
