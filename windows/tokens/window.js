@@ -41,9 +41,6 @@ export default {
     };
     bar.append(refresh);
     box.append(bar);
-    for (const s of subscriptions.providers) {
-      if (s.retryAt) box.append(el('p', 'tk-empty', esc(`${s.name} updates paused until ${time(s.retryAt)} due to rate limiting.`)));
-    }
     // Why the last wake worked or didn't: nothing else reports it.
     for (const r of wake.results || []) box.append(el('p', `tk-wake-note${r.ok ? '' : ' tk-wake-failed'}`, `${esc(r.name)}: ${esc(r.message)}`));
     if (wake.working) box.append(el('p', 'tk-wake-note', 'Waking…'));
@@ -73,7 +70,7 @@ export default {
       const title = el('div', 'tk-limit');
       title.append(el('b', '', esc(s.name)), el('span', '', s.at ? `Updated ${time(s.at)}` : ''));
       section.append(title);
-      const note = s.retryAt ? '' : s.message;
+      const note = s.retryAt ? (s.windows.length ? '' : 'Usage temporarily unavailable.') : s.message;
       if (note || !s.windows.length) section.append(el('p', 'tk-empty', esc(note || 'No usage limits reported.')));
       for (const w of s.windows) {
         const head = el('div', 'tk-limit');
