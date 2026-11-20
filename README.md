@@ -2,22 +2,20 @@
 
 # Codesk
 
-**A desktop you can reshape just by asking.**
+**Same agents. New UI.**
 
-Codesk is a desktop for your coding agents, running locally in your browser,
-where you can change **ANYTHING** you see.
+Codesk is a local interface for Claude Code, Codex, and other coding agents,
+running in your browser. Customize anything by asking: windows, controls,
+layout, or the whole look.
 
-Ask your agent to add a window, wire up a
-control, or reskin the whole desktop. Changes appear live, without interrupting
-the conversation.
+“Show my app beside our chat.” “Add a phone view.” “Make the desk look like
+Synthwave.” Keep shaping it as you work.
 
-Keep an app preview beside the conversation, watch your token usage, or play
-solitaire while your agent works. Create anything, change anything, and share what you make with friends or teammates.
-
-Works with Claude Code, Codex, and any other agent that supports the
+**Your setup comes with you.** Keep your sign-in, settings, project instructions,
+skills, and MCP servers. Works with any agent that supports the
 [Agent Client Protocol (ACP)](https://agentclientprotocol.com).
 
-<p align="center"><img src="docs/screenshots/skins.gif" alt="One desk changing skin from Codesk to Synthwave, Stardew Valley and High Seas, while Claude works and a game of solitaire waits"></p>
+<p align="center"><img src="docs/screenshots/preview-diff.jpg" alt="Codesk with an app preview and a diff beside the agent chat"></p>
 
 ## Get started
 
@@ -58,27 +56,31 @@ remove it.
 
 </details>
 
-## Shape the desk in the conversation
+## Customize anything
 
-Keep shaping the interface as the task unfolds. Add a control when you find
-yourself repeating a command, open a window for something you want to watch,
-or give the whole desk a different feel. Ask in the chat, even mid-task:
+Ask in the chat to add a window, wire up a control, rearrange the desk, or
+change its appearance:
 
 > “Show me how the site looks in a window here.”\
-> “Put the product images side by side.”\
+> “Add a button to run my tests.”\
 > “Open the diff and walk me through what you changed.”\
-> “Lay out the ideas we could explore next.”\
-> “Make it look like Starry Night.”
+> “Put the product images side by side.”\
+> “Make the whole desk look like Starry Night.”
 
-- **Add the tools you need.** Dashboards, galleries, control panels, and games
-  live in windows beside your chat. Windows can run local commands, so a button
-  can do real work.
-- **Give the desk a new look.** Skins change colours, fonts, artwork, even a
-  moving scene. Eight are built in (`codesk skin midnight`). Describe a mood,
-  a game, or a painting and ask your agent to make another.
+Then keep talking to change it: add a view, swap a chart, put a button on it.
+
+- **Windows that do real work.** Previews, dashboards, galleries, and control
+  panels live beside your chat. Windows can run local commands, so a button can
+  run your tests or deploy.
+- **Make it yours.** Skins change colours, fonts, artwork, even a moving scene.
+  Eight are built in (`codesk skin midnight`). Describe a mood, a game, or a
+  painting and ask your agent to make another. There's solitaire for the
+  waiting, too.
 - **Edit it yourself.** The interface is HTML, CSS, and JavaScript. You
   can edit it yourself or have your agent do it, then share a window or skin
   as a ZIP.
+
+<p align="center"><img src="docs/screenshots/skins.gif" alt="One desk changing skin from Codesk to Synthwave, Stardew Valley and High Seas, while Claude works and a game of solitaire waits"></p>
 
 <table>
   <tr>

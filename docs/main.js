@@ -25,23 +25,82 @@
   }));
   if (document.body.dataset.skin) wear(document.body.dataset.skin);
 
-  // Chat tabs: one conversation per agent.
-  const tabs = [...document.querySelectorAll('[role="tab"]')];
-  function select(tab) {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(t));
-    t.addEventListener('keydown', (e) => {
-      const n = { ArrowRight: tabs[(i + 1) % tabs.length], ArrowLeft: tabs[(i - 1 + tabs.length) % tabs.length],
-        Home: tabs[0], End: tabs[tabs.length - 1] }[e.key];
-      if (n) { e.preventDefault(); select(n); n.focus(); }
-    });
+  // A scripted example: each click changes the same preview or the desk.
+  const msgs = document.getElementById('msgs');
+  const asks = document.getElementById('asks');
+  const stage = document.getElementById('stage');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const initialSkin = document.body.dataset.skin || 'house';
+  const preview = (device) => `<div class="preview-site" data-device="${device}"><iframe
+    src="https://letsbrag.app/" title="letsbrag.app — ${device} preview"
+    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+    loading="lazy" referrerpolicy="no-referrer"></iframe></div>`;
+  const previewSizes = new ResizeObserver((entries) => {
+    for (const { target, contentRect } of entries) {
+      const width = target.dataset.device === 'phone' ? 390 : 1100;
+      const scale = contentRect.width / width;
+      if (!scale) continue;
+      const frame = target.querySelector('iframe');
+      frame.style.width = `${width}px`;
+      frame.style.height = `${target.clientHeight / scale}px`;
+      frame.style.transform = `scale(${scale})`;
+    }
   });
+  function sizePreviews() {
+    stage.querySelectorAll('.preview-site').forEach((view) => previewSizes.observe(view));
+  }
+  const STEPS = [
+    { ask: 'Open letsbrag.app beside our chat.', reply: 'Here it is. You can use the site right inside the window.',
+      run: () => {
+        previewSizes.disconnect();
+        stage.innerHTML = `<div class="win built" id="w-preview"><div class="bar"><i></i><i></i><i></i><a href="https://letsbrag.app/" target="_blank" rel="noopener noreferrer">letsbrag.app ↗</a></div>
+          <div class="preview-views"><div class="device desktop"><span class="device-label">Desktop</span>${preview('desktop')}</div></div></div>`;
+        stage.classList.add('busy');
+        sizePreviews();
+      } },
+    { ask: 'Add a phone view.', reply: 'Desktop and phone, together in the same window.',
+      run: () => {
+        const views = stage.querySelector('.preview-views');
+        views.classList.add('with-phone');
+        views.insertAdjacentHTML('beforeend', `<div class="device phone"><span class="device-label">Phone</span>${preview('phone')}</div>`);
+        sizePreviews();
+      } },
+    { ask: 'Make the desk look like Synthwave.', reply: 'New colours and fonts for the whole desk. Your app stays the same.',
+      run: () => wear('synthwave') },
+  ];
+  let next = 0, busy = false;
+  function offer() {
+    asks.innerHTML = '';
+    const b = document.createElement('button'); b.type = 'button';
+    if (next < STEPS.length) { b.textContent = STEPS[next].ask; b.onclick = play; }
+    else { b.textContent = 'Start over'; b.className = 'quiet'; b.onclick = reset; }
+    asks.append(b);
+  }
+  function say(cls, text) {
+    const m = document.createElement('p'); m.className = `msg ${cls}`; m.textContent = text;
+    msgs.append(m); msgs.scrollTop = msgs.scrollHeight;
+    return m;
+  }
+  function play() {
+    if (busy || next >= STEPS.length) return;
+    busy = true;
+    const step = STEPS[next++];
+    asks.querySelector('button').disabled = true;
+    // One exchange keeps the request and its result together on small screens.
+    msgs.replaceChildren();
+    say('me', step.ask);
+    const dots = calm ? null : say('ai typing', '•••');
+    const finish = () => {
+      dots?.remove(); say('ai', step.reply); step.run();
+      busy = false; offer();
+    };
+    if (calm) finish(); else setTimeout(finish, 500);
+  }
+  function reset() {
+    next = 0; wear(initialSkin);
+    offer(); play();
+  }
+  offer(); play();
 
   // Drag a window by its title bar; it moves from where it sits in the layout,
   // stays on the page, and settles back into place when the layout stacks.

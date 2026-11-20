@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Codesk — a desktop you can reshape just by asking</title>
-<meta name="description" content="Codesk is a desktop for your coding agents, running locally in your browser, where you can change anything you see." />
+<title>Codesk — same agents, new UI</title>
+<meta name="description" content="A local interface for your coding agents. Customize anything by asking: windows, controls, layout, or the whole look. Local and open source." />
 <meta name="theme-color" content="#FBF1E6" />
 <link rel="icon" href="assets/codesk.svg" type="image/svg+xml" />
-<meta property="og:title" content="Codesk — a desktop you can reshape just by asking" />
-<meta property="og:description" content="A desktop for your coding agents, running locally in your browser, where you can change anything you see." />
+<meta property="og:title" content="Codesk — same agents, new UI" />
+<meta property="og:description" content="A local interface for your coding agents. Customize anything by asking: windows, controls, layout, or the whole look." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://latent-spaces.github.io/codesk/" />
 <meta property="og:image" content="https://latent-spaces.github.io/codesk/assets/og.png" />
@@ -17,8 +17,8 @@
 <meta property="og:image:alt" content="Codesk: a browser desktop where Claude and Codex work side by side, with windows the agent built" />
 <meta property="og:site_name" content="Codesk" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Codesk — a desktop you can reshape just by asking" />
-<meta name="twitter:description" content="A desktop for your coding agents, running locally in your browser, where you can change anything you see." />
+<meta name="twitter:title" content="Codesk — same agents, new UI" />
+<meta name="twitter:description" content="A local interface for your coding agents. Customize anything by asking: windows, controls, layout, or the whole look." />
 <meta name="twitter:image" content="https://latent-spaces.github.io/codesk/assets/og.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,63 +37,47 @@
 
   <main class="desk" id="top">
     <section id="hero">
-      <div>
-        <h1>A desktop you can <em>reshape</em> just by asking.</h1>
-        <p class="sub">Codesk is a desktop for your coding agents, running locally in your browser, where you can change <strong>ANYTHING</strong> you see.</p>
-        <p class="works">Works with Claude Code, Codex, and any other agent that supports the <a href="https://agentclientprotocol.com">Agent Client Protocol (ACP)</a>.</p>
+      <h1>Same agents.<br><em>New UI.</em></h1>
+      <div class="lede">
+        <p class="sub">Codesk is a local interface for your coding agents, running in your browser. <strong>Customize anything by asking:</strong> windows, controls, layout, or the whole look.</p>
+        <p class="works"><strong>Your setup comes with you.</strong> Use Claude Code, Codex, or any <a href="https://agentclientprotocol.com">ACP</a> agent. Keep your sign-in, settings, skills and MCP servers.</p>
         <div><a class="btn" href="#install">Install Codesk</a></div>
       </div>
     </section>
 
-    <section class="win" id="chat" aria-label="Example conversations">
-      <div class="bar"><i></i><i></i><i></i><span>Chat</span></div>
-      <div class="tabs" role="tablist" aria-label="Agents">
-        <button role="tab" id="t-claude" aria-controls="c-claude" aria-selected="true">Claude</button>
-        <button role="tab" id="t-codex" aria-controls="c-codex" aria-selected="false" tabindex="-1">Codex</button>
-        <button role="tab" id="t-gemini" aria-controls="c-gemini" aria-selected="false" tabindex="-1">Gemini</button>
-        <span class="newtab" aria-hidden="true" title="Start another chat">+</span>
-      </div>
-      <div class="convos">
-        <div class="msgs" role="tabpanel" id="c-claude" aria-labelledby="t-claude">
-          <p class="msg me">Show me how the site looks in a window here.</p>
-          <p class="msg ai">It’s open beside our chat, on localhost.</p>
-          <p class="msg me">Open the diff and walk me through what you changed.</p>
-          <p class="msg ai">It’s open. I’ll go through it file by file.</p>
-        </div>
-        <div class="msgs" role="tabpanel" id="c-codex" aria-labelledby="t-codex" hidden>
-          <p class="msg me">Put the product images side by side.</p>
-          <p class="msg ai">Done. Click one to see it full size.</p>
-          <p class="msg me">Lay out the ideas we could explore next.</p>
-          <p class="msg ai">They’re on cards, each with its size and impact.</p>
-        </div>
-        <div class="msgs" role="tabpanel" id="c-gemini" aria-labelledby="t-gemini" hidden>
-          <p class="msg me">Make it look like Starry Night.</p>
-          <p class="msg ai">New skin on: swirling sky, warm yellow light.</p>
-          <p class="msg me">Add a window that shows my token usage.</p>
-          <p class="msg ai">Added. It updates as we talk.</p>
-        </div>
-      </div>
+    <div class="demo" aria-label="Interactive example">
+    <section class="win" id="chat" aria-label="Example conversation">
+      <div class="bar"><i></i><i></i><i></i><span>Example chat · Claude</span></div>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
       <div class="composer">
         <p>Try asking</p>
-        <div class="skins" role="group" aria-label="Change this page’s look">
-          <button type="button" data-skin="synthwave" aria-pressed="false">Make it look like Synthwave</button>
-          <button type="button" data-skin="stardew" aria-pressed="false">Make it look like Stardew</button>
-          <button type="button" data-skin="vangogh" aria-pressed="false">Make it look like Starry Night</button>
-          <button type="button" data-skin="house" aria-pressed="true">Back to the original</button>
-        </div>
+        <div class="asks" id="asks"></div>
       </div>
     </section>
 
+    <section class="stage" id="stage" aria-label="Windows the agent built">
+      <p class="empty">Ask to open letsbrag.app beside the chat.</p>
+    </section>
+
+    </div>
+
     <section class="section" aria-labelledby="what">
-      <h2 id="what">Ask, and the desk changes.</h2>
+      <h2 id="what">Make the interface yours.</h2>
       <div class="points">
-        <div><b>Add tools</b><p>Previews, diffs, galleries, and games in windows beside your chat.</p></div>
-        <div><b>Change the look</b><p>Eight skins built in. Describe a new one and your agent makes it.</p></div>
-        <div><b>Hack on it</b><p>It's all HTML, CSS, and JavaScript. Edit it yourself or with your agent.</p></div>
+        <div><b>Ask for any window</b><p>Previews, charts, diffs, galleries, control panels. If nobody has built the one you need, ask for it.</p></div>
+        <div><b>Change how it works</b><p>Rearrange the desk or add a button to run your tests. Customize it by talking, or edit the HTML, CSS and JavaScript yourself.</p></div>
+        <div><b>Change the whole look</b><p>Eight skins built in, and your agent makes more. Try one on this page:</p>
+          <div class="skins" role="group" aria-label="Change this page’s look">
+            <button type="button" data-skin="synthwave" aria-pressed="false">Synthwave</button>
+            <button type="button" data-skin="stardew" aria-pressed="false">Stardew</button>
+            <button type="button" data-skin="vangogh" aria-pressed="false">Starry Night</button>
+            <button type="button" data-skin="house" aria-pressed="true">Original</button>
+          </div>
+        </div>
       </div>
       <div class="shots">
+        <figure class="win"><div class="bar"><i></i><i></i><i></i><span>A live preview beside the diff</span></div><img src="screenshots/preview-diff.jpg" width="1600" height="1000" loading="lazy" alt="Two windows Claude opened beside the chat: the site running on localhost, and the uncommitted changes to it as a diff" /></figure>
         <figure class="win"><div class="bar"><i></i><i></i><i></i><span>One desk, four skins</span></div><video src="screenshots/skins.mp4" poster="screenshots/skins-poster.jpg" width="1200" height="750" autoplay muted loop playsinline preload="metadata" aria-label="One desk changing skin from Codesk to Synthwave, Stardew Valley and High Seas, while Claude works and a game of solitaire waits"></video></figure>
-        <figure class="win"><div class="bar"><i></i><i></i><i></i><span>A live preview beside the diff</span></div><img src="screenshots/preview-diff.jpg" width="1600" height="1000" loading="lazy" alt="Two windows side by side: the site running on localhost, and the uncommitted changes to it as a diff" /></figure>
       </div>
     </section>
 
