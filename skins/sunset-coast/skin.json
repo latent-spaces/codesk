@@ -1,0 +1,73 @@
+{
+  "id": "sunset-coast",
+  "name": "Sunset Coast",
+  "note": "Neon dusk on a Florida causeway: a police chase, a chopper searchlight, palms and a gator in the bay",
+  "credit": "Original artwork drawn for Codesk.",
+  "fontHref": "https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;600;800&display=swap",
+  "assets": [
+    {
+      "id": "coast",
+      "file": "coast.svg",
+      "credit": "Skyline and causeway at sunset"
+    },
+    {
+      "id": "palm",
+      "file": "palm.svg",
+      "credit": "Palm silhouette"
+    },
+    {
+      "id": "car",
+      "file": "car.svg",
+      "credit": "A coupe with its lights on"
+    },
+    {
+      "id": "police",
+      "file": "police.svg",
+      "credit": "A cruiser in pursuit"
+    },
+    {
+      "id": "heli",
+      "file": "heli.svg",
+      "credit": "A news chopper"
+    },
+    {
+      "id": "gator",
+      "file": "gator.svg",
+      "credit": "A gator watching the traffic"
+    },
+    {
+      "id": "flamingo",
+      "file": "flamingo.svg",
+      "credit": "Neon motel flamingo"
+    }
+  ],
+  "wallpaper": "url('{{asset:coast}}') center bottom / cover no-repeat #1a0b3d",
+  "base": "dark",
+  "vars": {
+    "--ground": "#1A0B2E",
+    "--surface": "rgba(30,14,52,.94)",
+    "--sunk": "#150926",
+    "--ink": "#FFF1F6",
+    "--ink-2": "#F3A9C8",
+    "--ink-3": "#B07AA6",
+    "--line": "#4A2468",
+    "--line-soft": "#2E1548",
+    "--accent": "#FF4FA3",
+    "--mint": "#3FF2E0",
+    "--lilac": "#A57BFF",
+    "--sun": "#FFC56B",
+    "--clay": "#FF8A3D",
+    "--round": "\"Anton\", \"Outfit\", sans-serif",
+    "--sans": "\"Outfit\", system-ui, sans-serif",
+    "--shadow": "0 12px 32px -12px rgba(255,79,163,.55)",
+    "--shadow-hi": "0 0 0 1px rgba(63,242,224,.55), 0 18px 48px -12px rgba(255,138,61,.5)",
+    "--tint-sat": "55%",
+    "--tint-lit": "26%"
+  },
+  "tint": {
+    "from": 300,
+    "span": 70
+  },
+  "css": ".win{border-color:#4a2468}\n.win.focused{border-color:#ff4fa3;box-shadow:var(--shadow-hi)}\n.win > .bar{background:linear-gradient(90deg,var(--tint),rgba(255,138,61,.18))}\n.win > .bar .title{text-transform:uppercase;letter-spacing:.06em}\n.menubar,.dock{backdrop-filter:blur(12px) saturate(1.3)}\n.sc-coast{position:absolute;inset:0;background:url('{{asset:coast}}') center bottom / cover no-repeat}\n.sc-road{--k:max(calc(100vw / 1600),calc(100vh / 1000));position:absolute;left:0;right:0;bottom:calc(var(--k) * 230);height:0}\n.sc-car{position:absolute;bottom:0;width:calc(var(--k) * 150);aspect-ratio:3;background:url('{{asset:car}}') center / contain no-repeat;\n  animation:scDrive 16s linear infinite;filter:drop-shadow(0 0 8px rgba(255,79,163,.6))}\n.sc-car::after{content:'';position:absolute;left:96%;top:50%;width:calc(var(--k) * 160);height:40%;transform:translateY(-30%);\n  background:linear-gradient(90deg,rgba(255,242,168,.55),transparent);clip-path:polygon(0 35%,100% 0,100% 100%,0 65%)}\n@keyframes scDrive{0%{left:-15%}100%{left:110%}}\n.sc-palm{--k:max(calc(100vw / 1600),calc(100vh / 1000));position:absolute;bottom:-2%;aspect-ratio:1/2;background:url('{{asset:palm}}') center bottom / contain no-repeat;transform-origin:50% 100%;animation:scSway var(--t) ease-in-out infinite}\n@keyframes scSway{0%,100%{rotate:-1.2deg}50%{rotate:1.2deg}}\n.sc-shimmer{position:absolute;left:0;right:0;bottom:0;height:calc(var(--k) * 200);\n  background:repeating-linear-gradient(rgba(255,210,122,.08) 0 2px,transparent 2px 9px);animation:scShim 3s ease-in-out infinite alternate}\n@keyframes scShim{to{opacity:.35;transform:translateX(12px)}}\n.sc-cop{position:absolute;bottom:0;width:calc(var(--k) * 150);aspect-ratio:3;background:url('{{asset:police}}') center / contain no-repeat;animation:scDrive 16s linear infinite;animation-delay:1.5s;left:-30%}\n.sc-cop::before,.sc-cop::after{content:'';position:absolute;top:8%;width:9%;height:9%;border-radius:3px}\n.sc-cop::before{left:41%;background:#ff2d55;animation:scRed .5s steps(1) infinite}\n.sc-cop::after{left:51%;background:#2d7bff;animation:scBlue .5s steps(1) infinite}\n@keyframes scRed{0%{box-shadow:0 0 calc(var(--k)*40) calc(var(--k)*14) rgba(255,45,85,.85);opacity:1}50%{box-shadow:none;opacity:.25}}\n@keyframes scBlue{0%{box-shadow:none;opacity:.25}50%{box-shadow:0 0 calc(var(--k)*40) calc(var(--k)*14) rgba(45,123,255,.85);opacity:1}}\n.sc-heli{--k:max(calc(100vw / 1600),calc(100vh / 1000));position:absolute;top:20%;width:calc(var(--k) * 170);aspect-ratio:220/90;animation:scFly 30s linear infinite}\n.sc-heli i{position:absolute;inset:0;background:url('{{asset:heli}}') center / contain no-repeat;transform:scaleX(-1);animation:scHover 2.6s ease-in-out infinite}\n.sc-heli b{position:absolute;left:30%;top:80%;width:calc(var(--k) * 260);height:calc(var(--k) * 520);margin-left:calc(var(--k) * -130);transform-origin:50% 0;\n  background:linear-gradient(rgba(240,255,252,.55),rgba(240,255,252,0));clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);animation:scBeam 5s ease-in-out infinite alternate;mix-blend-mode:screen}\n@keyframes scFly{0%{left:110%}100%{left:-20%}}\n@keyframes scHover{0%,100%{translate:0 0;rotate:2deg}50%{translate:0 6px;rotate:-1deg}}\n@keyframes scBeam{0%{rotate:-22deg}100%{rotate:18deg}}\n.sc-gator{--k:max(calc(100vw / 1600),calc(100vh / 1000));position:absolute;left:58%;bottom:calc(var(--k) * 110);width:calc(var(--k) * 190);aspect-ratio:200/60;background:url('{{asset:gator}}') center / contain no-repeat;animation:scBob 4s ease-in-out infinite, scDrift 40s ease-in-out infinite alternate}\n.sc-gator::after{content:'';position:absolute;left:-10%;right:-10%;bottom:-4%;height:22%;border-radius:50%;border:2px solid rgba(255,210,122,.35);border-top-color:transparent;animation:scRip 2s ease-out infinite}\n@keyframes scBob{0%,100%{translate:0 0}50%{translate:0 4px}}\n@keyframes scDrift{to{left:44%}}\n@keyframes scRip{from{transform:scale(.7);opacity:1}to{transform:scale(1.25);opacity:0}}\n.sc-sign{position:absolute;right:5%;top:8%;display:flex;align-items:center;gap:.25em;font:400 clamp(28px,4.4vw,64px)/1 \"Anton\",sans-serif;letter-spacing:.04em;text-transform:uppercase;\n  color:#fff;text-shadow:0 0 6px #ff4fa3,0 0 18px #ff4fa3,0 0 42px #ff4fa3;transform:rotate(-6deg);opacity:.92}\n.sc-sign .fl{width:1.3em;aspect-ratio:160/260;background:url('{{asset:flamingo}}') center / contain no-repeat;filter:drop-shadow(0 0 6px #ff4fa3) drop-shadow(0 0 16px #ff4fa3);animation:scFlick 7s steps(1) infinite}\n.sc-sign small{display:block;font:600 .3em \"Outfit\",sans-serif;letter-spacing:.4em;color:#bffcf5;text-shadow:0 0 6px #3ff2e0,0 0 16px #3ff2e0;margin-top:.35em}\n.sc-sign .no{color:#ffb3d6;animation:scFlick 4s steps(1) infinite}\n@keyframes scFlick{0%,100%{opacity:1}62%{opacity:.15}63%{opacity:1}65%{opacity:.3}66%{opacity:1}}\n.win.focused > .bar{background:linear-gradient(90deg,rgba(255,79,163,.45),rgba(255,138,61,.3) 60%,rgba(63,242,224,.15))}\n::selection{background:#ff4fa3;color:#fff}\n@media (prefers-reduced-motion:reduce){.sc-car,.sc-cop,.sc-palm,.sc-shimmer,.sc-heli,.sc-heli *,.sc-gator,.sc-gator::after,.sc-sign *,.sc-cop::before,.sc-cop::after{animation:none}.sc-car{left:34%}.sc-cop{left:22%}.sc-heli{left:60%}}\n.sc-convoy{position:absolute;bottom:0;left:-30%;width:0;height:0;animation:scConvoy 16s linear infinite}\n@keyframes scConvoy{0%{left:-14%}100%{left:calc(110% + var(--k) * 260)}}\n.sc-convoy .sc-car,.sc-convoy .sc-cop{animation:none;left:auto}\n.sc-convoy .sc-car{left:0}\n.sc-convoy .sc-cop{left:calc(var(--k) * -250)}\n@media (prefers-reduced-motion:reduce){.sc-convoy{animation:none;left:40%}}\n.sc-palm.p1{left:calc(50% + var(--k) * -832);height:calc(var(--k) * 700);--t:7s}\n.sc-palm.p2{left:calc(50% + var(--k) * -688);height:calc(var(--k) * 522);--t:5.5s;animation-delay:-2s}\n.sc-palm.p3{left:calc(50% + var(--k) * 501);height:calc(var(--k) * 630);--t:6.5s;animation-delay:-1s;transform:scaleX(-1)}",
+  "scene": "<div class=\"sc-coast\"></div><div class=\"sc-shimmer\"></div><div class=\"sc-heli\"><b></b><i></i></div><div class=\"sc-gator\"></div><div class=\"sc-road\"><div class=\"sc-convoy\"><div class=\"sc-cop\"></div><div class=\"sc-car\"></div></div></div><div class=\"sc-sign\"><span class=\"fl\"></span><span>Sunset Coast<small>motel · <span class=\"no\">no</span> vacancy</small></span></div><div class=\"sc-palm p1\"></div><div class=\"sc-palm p2\"></div><div class=\"sc-palm p3\"></div>"
+}

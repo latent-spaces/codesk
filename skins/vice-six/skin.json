@@ -1,0 +1,39 @@
+{
+  "id": "vice-six",
+  "name": "GTA VI \u00b7 Vice Six",
+  "note": "Cinematic Vice City key art, coral dusk and deep Atlantic blue. Unofficial fan skin.",
+  "credit": "Original AI-generated fan artwork. Grand Theft Auto belongs to Rockstar Games.",
+  "base": "dark",
+  "fontHref": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap",
+  "assets": [
+    {
+      "id": "keyart",
+      "file": "keyart.webp",
+      "credit": "Original AI-generated GTA VI inspired fan artwork."
+    }
+  ],
+  "wallpaper": "url('{{asset:keyart}}') center / cover no-repeat #102731",
+  "vars": {
+    "--ground": "#0c1922",
+    "--surface": "rgba(14,29,39,.97)",
+    "--sunk": "#0a151d",
+    "--ink": "#fff4e8",
+    "--ink-2": "#bed1d4",
+    "--ink-3": "#94adb5",
+    "--line": "#354953",
+    "--line-soft": "#233943",
+    "--accent": "#f4b3c8",
+    "--mint": "#8de2cd",
+    "--lilac": "#c3b9ed",
+    "--sun": "#ffd29b",
+    "--clay": "#f49b7c",
+    "--round": "\"Barlow Condensed\",sans-serif",
+    "--sans": "\"Barlow\",system-ui,sans-serif",
+    "--shadow": "0 14px 36px -12px rgba(0,8,17,.65)",
+    "--shadow-hi": "0 24px 60px -15px rgba(0,8,17,.8)",
+    "--tint-sat": "24%",
+    "--tint-lit": "18%"
+  },
+  "css": ".wall{top:var(--bar);background-position:center top!important}\n\n.win{border-radius:12px;border-color:#354953;background:var(--surface)}\n.win.focused{border-color:#f4b3c8;box-shadow:var(--shadow-hi)}\n.win > .bar{background:#182b34;border-bottom:1px solid #354953}\n.win.focused > .bar{background:#28353e;border-bottom-color:#f4b3c8}\n.win > .bar .title{font-family:var(--round);font-weight:600;letter-spacing:.035em;text-transform:uppercase;font-size:14px}\n.menubar{background:rgba(10,23,31,.96);border-bottom-color:#354953}\n.dock{background:rgba(10,23,31,.96);border-color:#354953}\n:focus-visible{outline:2px solid #ffd29b;outline-offset:3px}\n::selection{background:#f4b3c8;color:#101d26}\ninput,textarea{caret-color:#ffd29b}\n*{scrollbar-color:#78959f #101d26;scrollbar-width:thin}\n.v6-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,16,25,.28),transparent 60%),linear-gradient(0deg,rgba(5,16,25,.4),transparent 22%)}\n@media(max-width:700px){.wall{background-position:73% top!important}.win{background:#101e28}.v6-shade{background:rgba(5,16,25,.16)}}\n",
+  "scene": "<div class=\"v6-shade\" aria-hidden=\"true\"></div>"
+}
